@@ -3,14 +3,15 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const port = process.env.PORT || 3001
 require('dotenv').config()
-console.clear()
 
 // general config
+console.clear()
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static(__dirname + '/public'))
+app.use(express.urlencoded({ limit: '10mb', extended: false }))
 
 // DB connection
 const mongoose = require('mongoose')
