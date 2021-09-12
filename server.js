@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const port = process.env.PORT || 3001
-const indexRouter = require('./routes')
 require('dotenv').config()
 console.clear()
 
@@ -26,7 +25,10 @@ mongoose
   })
 
 // routes
+const indexRouter = require('./routes')
+const authorRouter = require('./routes/authors')
 app.use('/', indexRouter)
+app.use('/authors', authorRouter)
 
 // app listening
 app.listen(
